@@ -25,7 +25,7 @@
         </el-form>
         <div slot="footer" class="dialog-footer">
             <el-button :plain="true" type="danger" v-on:click="canclemodal">Cancel</el-button>
-            <el-button :plain="true" @click="updateForm(form)">Save</el-button>
+            <el-button :plain="true" @click.prevent="updateForm(form)">Save</el-button>
         </div>
     </el-dialog>
 </template>
@@ -45,7 +45,7 @@
                 let itemId = formName.id;
                 let phone = formName.phone;
                 let zone = formName.zone;
-                this.$axios.put('http://127.0.0.1:8000/api/persons/detail/' + itemId, {
+                this.$axios.put(window.API_URL + '/api/persons/detail/' + itemId, {
                     phone: phone,
                     zone: zone
                 })

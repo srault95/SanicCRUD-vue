@@ -10,8 +10,11 @@ var compiler = webpack(devConfig);
 var server = new webpackDevServer(compiler, {
     hot: true,
     noInfo: true,
+    disableHostCheck: true,
     publicPath: config.dev.outputPublicPath,
-    stats: { colors: true }
+    stats: {
+        colors: true
+    }
 });
 server.listen(config.dev.port, "0.0.0.0");
 var url = `http://localhost:${config.dev.port}/`;

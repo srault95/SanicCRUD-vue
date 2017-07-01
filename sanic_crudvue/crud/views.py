@@ -6,10 +6,11 @@ from playhouse.shortcuts import model_to_dict
 from .models import ShanghaiPersonInfo
 from .helper import list_remove_repeat
 
-crud_bp = Blueprint(
-    'crud',
-    url_prefix='/api/persons'
-)
+crud_bp = Blueprint('crud', url_prefix='/api/persons')
+
+@crud_bp.middleware('response')
+async def custom_banner(request, response):
+    response.headers["content-type"] = "application/json"
 
 
 class PersonsInfoListView(HTTPMethodView):

@@ -67,7 +67,7 @@
         data(){
             return {
                 tableData: [],
-                apiUrl: 'http://127.0.0.1:8000/api/persons',
+                apiUrl: window.API_URL + '/api/persons',
                 total: 0,
                 pageSize: 10,
                 currentPage: 1,
@@ -121,7 +121,7 @@
             editItem: function (index, rows) {
                 this.dialogFormVisible = true;
                 const itemId = rows[index].id;
-                const idurl = 'http://127.0.0.1:8000/api/persons/detail/' + itemId;
+                const idurl = window.API_URL + '/api/persons/detail/' + itemId;
                 this.$axios.get(idurl).then((response) => {
                     this.form = response.data;
                 }).catch(function (response) {
